@@ -27,3 +27,48 @@ app.get('/shopping-list', (req, res) => {
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
 });
+
+
+
+///// CODE I ADDED /////
+
+// Import?? Recipes from ./models??
+// Copying pattern for ShoppingList
+const {Recipes} = require('./models');
+
+// Add recipes
+Recipes.create('chocolate milk', ['cocoa', 'milk', 'sugar']);
+Recipes.create('bread', ['flour', 'water', 'salt', 'yeast']);
+
+// GET request to /recipes, return Recipes
+app.get('/recipes', (req, res) => {
+  res.json(Recipes.get());
+});
+
+
+
+
+/* Thinkful's soln
+
+// adding some recipes to `Recipes` so there's something
+// to retrieve.
+Recipes.create(
+  'boiled white rice', ['1 cup white rice', '2 cups water', 'pinch of salt']);
+Recipes.create(
+  'milkshake', ['2 tbsp cocoa', '2 cups vanilla ice cream', '1 cup milk']);
+
+// when the root of this router is called with GET, return
+// all current ShoppingList items
+app.get('/shopping-list', (req, res) => {
+  res.json(ShoppingList.get());
+});
+
+app.get('/recipes', (req, res) => {
+  res.json(Recipes.get());
+})
+
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
+});
+
+*/
